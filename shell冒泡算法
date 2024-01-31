@@ -1,0 +1,32 @@
+length=${#my_array[@]}
+#!/bin/bash
+my_array=(9 2 3 4 6 7 5)
+for i  in "${my_array[@]}"
+do
+echo $i
+done
+echo "============="
+length=${#my_array[@]}
+echo -e "$length\n"
+echo "==================xia"
+function aa {
+i=0
+temp=0
+while (( i <= length-2 ))
+do
+        echo "i的值是$i"
+        temp=${my_array[i]}
+        if [ ${my_array[$((i+1))]} -gt ${my_array[$i]} ]
+then
+        echo "temp的值是  $temp"
+        my_array[i]=${my_array[i+1]}
+        my_array[i+1]=$temp
+fi
+((i++))
+done
+}
+for kk in `seq 1 $((length-2))`
+do
+aa
+done
+echo ${my_array[@]}
